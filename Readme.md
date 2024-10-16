@@ -19,9 +19,7 @@ fluentbit и сервер 1С:Предприятие должны быть ус�
   1.1 вариант с полным ТЖ:
   
   /opt/1cv8/x86_64/8.3.25.1336/conf/logcfg.xml
-
-##
-<tab><tab>
+...
 <?xml version='1.0' encoding='UTF-8'?>
 <config xmlns="http://v8.1c.ru/v8/tech-log">
   <log location="/1c/logs" history="4" placement="plain" format="json">
@@ -32,10 +30,12 @@ fluentbit и сервер 1С:Предприятие должны быть ус�
     </property>
   </log>
 </config>
-  
+...
+
   1.2 ТЖ с фильтрацией только необходимого:
 
-##		<?xml version="1.0"?>
+...
+  <?xml version="1.0"?>
 <config xmlns="http://v8.1c.ru/v8/tech-log">
         <dump create="false"/>
         <log location="/mnt/nfsshare/tj/1c-al01/logs"  history="4" placement="plain" format="json">
@@ -46,7 +46,7 @@ fluentbit и сервер 1С:Предприятие должны быть ус�
                 <property name="Context"/>
                 <property name="p:processName"/>
         </log>
-        <log location="/mnt/nfsshare/tj/1c-al01/logs"  history="4" placement="plain" format="json">
+           <log location="/mnt/nfsshare/tj/1c-al01/logs"  history="4" placement="plain" format="json">
                 <event>
                         <eq property="name" value="TLOCK"/>
                 </event>
@@ -66,7 +66,7 @@ fluentbit и сервер 1С:Предприятие должны быть ус�
                 <property name="Context"/>
                 <property name="p:processName"/>
         </log>
-        <log location="/mnt/nfsshare/tj/1c-al01/logs" history="4" placement="plain" format="json">
+            <log location="/mnt/nfsshare/tj/1c-al01/logs" history="4" placement="plain" format="json">
                 <event>
                         <eq property="name" value="CALL"/>
                         <ge property="Duration" value="10000"/>
@@ -81,7 +81,7 @@ fluentbit и сервер 1С:Предприятие должны быть ус�
                 <property name="p:processName"/>
         </log>
 </config>
-
+...
 Внимание на поля placement и format. 
 В данном случае placement=plain означает, что файлы будут расположены в указанной директории 
 без создания промежуточных каталогов с именами процессов,
