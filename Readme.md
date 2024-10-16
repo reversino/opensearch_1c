@@ -20,6 +20,8 @@ fluentbit и сервер 1С:Предприятие должны быть ус�
   
   /opt/1cv8/x86_64/8.3.25.1336/conf/logcfg.xml
 
+##
+<tab><tab>
 <?xml version='1.0' encoding='UTF-8'?>
 <config xmlns="http://v8.1c.ru/v8/tech-log">
   <log location="/1c/logs" history="4" placement="plain" format="json">
