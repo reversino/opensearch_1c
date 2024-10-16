@@ -32,34 +32,28 @@ fluentbit и сервер 1С:Предприятие должны быть ус�
 </config>
   
   1.2 ТЖ с фильтрацией только необходимого:
-<?xml version="1.0"?>
+
+##		<?xml version="1.0"?>
 <config xmlns="http://v8.1c.ru/v8/tech-log">
         <dump create="false"/>
-
         <log location="/mnt/nfsshare/tj/1c-al01/logs"  history="4" placement="plain" format="json">
                 <event>
                         <eq property="name" value="DBPOSTGRS"/>
                         <ge property="Durationus" value="100000"/>
                 </event>
-
                 <property name="Context"/>
                 <property name="p:processName"/>
         </log>
-
         <log location="/mnt/nfsshare/tj/1c-al01/logs"  history="4" placement="plain" format="json">
-
-                 <event>
+                <event>
                         <eq property="name" value="TLOCK"/>
                 </event>
-
                 <event>
                         <eq property="name" value="TTIMEOUT"/>
                 </event>
-
                 <event>
                         <eq property="name" value="TDEADLOCK"/>
                 </event>
-
                 <property name="t:connectID"/>
                 <property name="Regions"/>
                 <property name="Locks"/>
@@ -70,14 +64,11 @@ fluentbit и сервер 1С:Предприятие должны быть ус�
                 <property name="Context"/>
                 <property name="p:processName"/>
         </log>
-
         <log location="/mnt/nfsshare/tj/1c-al01/logs" history="4" placement="plain" format="json">
-
                 <event>
                         <eq property="name" value="CALL"/>
                         <ge property="Duration" value="10000"/>
                 </event>
-
                 <property name="Usr"/>
                 <property name="Context"/>
                 <property name="SessionID"/>
@@ -86,9 +77,7 @@ fluentbit и сервер 1С:Предприятие должны быть ус�
                 <property name="InBytes"/>
                 <property name="OutBytes"/>
                 <property name="p:processName"/>
-
         </log>
-
 </config>
 
 Внимание на поля placement и format. 
